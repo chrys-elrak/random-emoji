@@ -17,11 +17,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: animate-emoji 0.5s ease-in-out;
 }
 
 .emoji-field:hover {
     cursor: pointer;
-    scale: 0.8;
 }
 
 .emoji-field:click {
@@ -70,4 +70,18 @@
     gap: 1rem;
     justify-content: center;
     margin: 1rem 0;
+}
+
+@keyframes animate-emoji {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5) rotate(45deg);
+    }
+
+    100% {
+        transform: scale(1) rotate3d(-45deg);
+    }
 }
