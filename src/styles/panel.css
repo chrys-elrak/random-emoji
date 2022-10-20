@@ -17,6 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: animate-emoji 0.5s ease-in-out;
 }
 
 .emoji-field:hover {
@@ -39,6 +40,11 @@
     -ms-user-select: none;
     user-select: none;
 }
+
+.hidden {
+    display: none !important;
+}
+
 .button {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -64,4 +70,24 @@
     gap: 1rem;
     justify-content: center;
     margin: 1rem 0;
+}
+
+.copied-emoji {
+    text-align: center;
+    font-size: 1rem;
+    display: block;
+}
+
+@keyframes animate-emoji {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5) rotate(105deg);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
