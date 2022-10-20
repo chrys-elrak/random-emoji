@@ -21,6 +21,7 @@
 
 .emoji-field:hover {
     cursor: pointer;
+    scale: 0.8;
 }
 
 .emoji-field:click {
@@ -39,6 +40,11 @@
     -ms-user-select: none;
     user-select: none;
 }
+
+.hidden {
+    display: none !important;
+}
+
 .button {
     background-color: #fff;
     border: 1px solid #ccc;
