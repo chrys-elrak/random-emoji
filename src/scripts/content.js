@@ -1,17 +1,12 @@
 const textareas = document.querySelectorAll('textarea');
+const URL = chrome.runtime.getURL('src/data/emoji.json');
 const OFFSETS = 10;
+
 if (textareas.length) {
     const textarea = textareas[0];
     textarea.addEventListener('focus', () => {
         main(textarea);
     });
-
-    // textarea.addEventListener('blur', () => {
-    //     const container = document.querySelector('.container');
-    //     if (container) {
-    //         container.remove();
-    //     }
-    // });
 }
 
 function main(textarea) {
@@ -106,5 +101,8 @@ function getOffset(el) {
 }
 
 function getEmoji() {
-    return fetch('https://ranmoji.herokuapp.com/emojis/api/v.1.0/').then(res => res.json()).then(data => data.emoji);
+    return fetch(URL).then(res => res.json()).then(data => {
+        const {emoji} = data[Math.floor(Math.random() * data.length)];
+        return emoji;
+    });
 }
