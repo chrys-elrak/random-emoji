@@ -4,6 +4,7 @@ const closeButton = document.querySelector('.close');
 const loader = document.querySelector('#loader');
 const URL = chrome.runtime.getURL('src/data/emoji.json');
 const AUTO_CLOSE_DURATION = 1000;
+emojiField.classList.add('unselectable');
 
 function getEmoji() {
     return fetch(URL).then(res => res.json()).then(data => {
