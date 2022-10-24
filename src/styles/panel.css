@@ -84,7 +84,7 @@
     }
 
     50% {
-        transform: scale(1.5) rotate(105deg);
+        transform: scale(1.5) ;
     }
 
     100% {
