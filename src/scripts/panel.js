@@ -2,10 +2,14 @@ const emojiField = document.querySelector('.emoji-field');
 const randomButton = document.querySelector('.random');
 const closeButton = document.querySelector('.close');
 const loader = document.querySelector('#loader');
+const URL = chrome.runtime.getURL('src/data/emoji.json');
 const AUTO_CLOSE_DURATION = 1000;
 
 function getEmoji() {
-    return fetch('https://ranmoji.herokuapp.com/emojis/api/v.1.0/').then(res => res.json()).then(data => data.emoji);
+    return fetch(URL).then(res => res.json()).then(data => {
+        const {emoji} = data[Math.floor(Math.random() * data.length)];
+        return emoji;
+    });
 }
 
 getEmoji().then(emoji => {
