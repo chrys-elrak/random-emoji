@@ -4,7 +4,11 @@ const closeButton = document.querySelector('.close');
 const loader = document.querySelector('#loader');
 const URL = chrome.runtime.getURL('src/data/emoji.json');
 const AUTO_CLOSE_DURATION = 1000;
-emojiField.classList.add('unselectable');
+const COPIED_EMOJI_CLASS = 'copied-emoji';
+const USELECTABLE_CLASS = 'unselectable';
+const HIDDEN_CLASS = 'hidden';
+
+emojiField.classList.add(USELECTABLE_CLASS);
 
 function getEmoji() {
     return fetch(URL).then(res => res.json()).then(data => {
@@ -15,8 +19,8 @@ function getEmoji() {
 
 getEmoji().then(emoji => {
     emojiField.innerHTML = emoji;
-    emojiField.classList.remove('hidden');
-    loader.classList.add('hidden');
+    emojiField.classList.remove(HIDDEN_CLASS);
+    loader.classList.add(HIDDEN_CLASS);
 });
 
 emojiField.addEventListener('click', async () => {
@@ -27,7 +31,7 @@ emojiField.addEventListener('click', async () => {
         <h2>${emojiField.innerText}</h2>
         <i>Enjoy it!</i>
     `;
-    emojiField.classList.add('copied-emoji');
+    emojiField.classList.add(COPIED_EMOJI_CLASS);
     closeButton.remove();
     randomButton.remove();
     // close on click
@@ -38,12 +42,12 @@ emojiField.addEventListener('click', async () => {
 
 randomButton.addEventListener('click', async () => {
     // show loader
-    loader.classList.remove('hidden');
-    emojiField.classList.add('hidden');
+    loader.classList.remove(HIDDEN_CLASS);
+    emojiField.classList.add(HIDDEN_CLASS);
     // generate a new emoji
     emojiField.innerHTML = await getEmoji();
-    emojiField.classList.remove('hidden');
-    loader.classList.add('hidden');
+    emojiField.classList.remove(HIDDEN_CLASS);
+    loader.classList.add(HIDDEN_CLASS);
 });
 
 closeButton.addEventListener('click', () => {
