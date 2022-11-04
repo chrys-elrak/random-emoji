@@ -2,6 +2,7 @@
     "name": "Ext emoji",
     "manifest_version": 3,
     "version": "1.0",
+    "description": "Get a random emoji for every where and every time. Copy on clipboard or insert directly in your input field.",
     "action": {
         "default_popup": "src/popup/panel.html",
         "default_title": "Panel"
